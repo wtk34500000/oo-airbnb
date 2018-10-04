@@ -7,8 +7,9 @@ You are building an app for an Airbnb competitor
     - A listing has a city attribute which is a string of a city name, e.g. 'Seattle'
     - It cannot be changed after it is initialized
   - A `Guest` has many trips
+    - A guest is initialized with a name. It cannot be changed after it is initialized
   - A `Trip` belongs to a listing and a guest
-    - It will also be initialized with a duration of the trip
+    - It will also be initialized with a guest, listing, and a duration of the trip
 
 As always, begin with making sure to draw out the relationships and understand the domain. Then, 
 below you will find the methods that we'd expect for you to complete. They are grouped by class,
