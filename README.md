@@ -1,55 +1,51 @@
-# BetterLyft™ 
+# Airbnb Relationship Practice
 
 ## Deliverables
-You are building an app for a Lyft/Uber competitor. The models that you will use for your application are: Passenger, Driver, and Ride.
+You are building an app for an Airbnb competitor
+- Your domain includes the models `Listing`, `Trip`, and `Guest`
+  - A `Listing` (i.e. a house or apartment) has many trips
+    - A listing has a city attribute which is a string of a city name, e.g. 'Seattle'
+    - It cannot be changed after it is initialized
+  - A `Guest` has many trips
+  - A `Trip` belongs to a listing and a guest
+    - It will also be initialized with a duration of the trip
 
-## Domain Modeling
-  - A Passenger has many rides
-  - A Driver has many rides
-  - A Ride belongs to a passenger and a driver
-  
-Always start by drawing out the relationship either on a whiteboard or piece of paper. Think about how each of these models will be connected. From there then begin writing code.
+As always, begin with making sure to draw out the relationships and understand the domain. Then, 
+below you will find the methods that we'd expect for you to complete. They are grouped by class,
+they are not ordered in any particular way beyond that.  
 
-## Deliverables
+#### Listing
+- `Listing#guests`
+  - Returns an array of all Guest instances who have stayed at a listing
+- `Listing#trips`
+  - Returns an array of all Trip instances at a listing
+- `Listing#trip_count`
+  - Returns the number of trips that have been taken to that listing
+- `Listing.all`
+  - Returns an array of all Listing instances that have been created
+- `Listing.find_all_by_city`
+  - Takes an argument of a city name (as a string) and returns an array of all Listing instances for that city
+- `Listing.most_popular`
+  - Finds the listing that has had the most trips
 
-We'd like for you build out the following methods for each class. As you work, we want to make sure we are testing our code every step of the way. We've made a file for you to test out your methods. You can run the command `ruby tools/console.rb` and it will run that file, along with all of the variables or actions you declare in the `tools/console.rb`.
+#### Guest
+- `Guest#listings`
+  - Returns an array of all Listing instances a guest has stayed at
+- `Guest#trips`
+  - Returns an array of all Trip instances a guest has taken
+- `Guest#trip_count`
+  - Returns the number of trips a Guest has taken
+- `Guest.all`
+  - Returns an array of all Guest instances
+- `Guest.pro_traveler`
+  - Returns an array of all Guest instances who have made over 1 trip
+- `Guest.find_all_by_name`
+  - Takes an argument of a guest's name (as a string), returns an array of Guest instances with that name
 
-#### Passenger
-A Passenger should be initialized with a name as a string. After the Passenger has been initialized, it shouldn't be changed.
-- `Passenger#name`
-  - Returns the name of the passenger
-- `Passenger#rides`
-  - Returns an array of Ride instances that this person has been on
-- `Passenger#drivers`
-  - Returns an array of Driver instances that this person has rode with
-- `Passenger#total_distance`
-  - Returns the floating number that represents the total distance the passenger has travelled using the service
-- `Passenger.all`
-  - Returns an array of all Passengers
-- `Passenger.premium_members`
-  - Returns an array of all Passengers who have travelled over 100 miles in total with the service
-
-#### Ride
-A Ride should be initialized with a driver (as a Driver object), a passenger (as a Passenger object), and a distance (as a float i.e. `3.2`). The distance refers to miles.
-- `Ride#passenger`
-  - Returns the Passenger object for that ride
-- `Ride#driver`
-  - Returns the Driver object for that ride
-- `Ride#distance`
-  - Returns the distance of the ride
-- `Ride.average_distance`
-  - Returns the average distance across ALL rides
-  
-#### Driver
-A Driver should be initialized with a name as a string.
-- `Driver#name`
-  - Returns the driver's name
-- `Driver#passenger_names`
-  - Returns an array of all Passengers' names a driver has driven. The names should be **unique** (no repeats).
-- `Driver#rides`
-  - Returns an array of all Rides a driver has made
-- `Driver.all`
-  - Returns an array of all Drivers
-- `Driver.mileage_cap(distance)`
-  - Takes an argument of a distance (float) and returns an array of all Drivers who have driven over the mileage
-
+#### Trip
+- `Trip#listing`
+  - Returns the Listing object for the trip
+- `Trip#guest`
+  - Returns the Guest object for the trip
+- `Trip.all`
+  - Returns an array of all Trips created
