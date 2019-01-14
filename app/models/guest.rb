@@ -33,20 +33,23 @@ class Guest
     end
 
     def self.pro_traveler
-        result=[]
-       Trip.all.each.uniq do |trip1|
-      #  puts guest1
-         count=0
-         Trip.all.each do |trip|
-          if trip.guest==trip1.guest
-            count+=1
-          end
-          end
-          if count > 1
-              result<<trip1.guest
-          end
-       end
-        result.uniq
+      Guest.all.select do |guest|
+        guest.trip_count >1
+      end
+      #   result=[]
+      #   Trip.all.uniq do |trip1|
+      # #  puts guest1
+      #     count=0
+      #     Trip.all.each do |trip|
+      #       if trip.guest==trip1.guest
+      #        count+=1
+      #       end
+      #     end
+      #     if count > 1
+      #         result<<trip1.guest
+      #     end
+      #  end
+      #   result.uniq
     end
 
     def self.find_all_by_name(guest_name)

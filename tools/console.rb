@@ -21,7 +21,7 @@ trip3=Trip.new(ela, tx, 50)
 trip4=Trip.new(alex, pa, 10)
 trip5=Trip.new(john, ca, 20)
 
-Listing.most_popular
+Guest.pro_traveler
 
 
 # Put your variables here~!
