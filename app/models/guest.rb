@@ -29,21 +29,22 @@ class Guest
     end
 
     def self.all
-        @@all 
+        @@all
     end
 
     def self.pro_traveler
         result=[]
-       @@all.each.uniq do |guest|
-        count=0
-        @@all.each do |guest|
-          if guest==guest
+       Trip.all.each.uniq do |trip1|
+      #  puts guest1
+         count=0
+         Trip.all.each do |trip|
+          if trip.guest==trip1.guest
             count+=1
-            if count > 1
-            result<<result
-            end
           end
-        end
+          end
+          if count > 1
+              result<<trip1.guest
+          end
        end
         result.uniq
     end

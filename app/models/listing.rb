@@ -37,16 +37,16 @@ class Listing
 
     def self.most_popular
         listing_hash={}
-        @@all.uniq.each do |listing|
-            count=0
-            @@all.each do |listing|
-                if listing == listing
+        Trip.all.uniq.each do |trip1|
+              count=0
+            Trip.all.each do |trip|
+                if trip.listing == trip1.listing
                     count+=1
-                    listing_hash[listing]=count
                 end
             end
+            listing_hash[trip1.listing]=count
         end
-        listing_hash.each.sort_by {|key, value| value}[0]
+        listing_hash.each.sort_by {|key, value| value}[listing_hash.size-1][0]
     end
 
 
